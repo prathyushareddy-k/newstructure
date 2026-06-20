@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JobPosting",
+  "description": "Structured data extracted from a job posting document.",
+  "type": "object",
+  "properties": {
+    "job_title": {
+      "type": "string",
+      "description": "The title of the position"
+    },
+    "company": {
+      "type": "string",
+      "description": "Name of the hiring company"
+    },
+    "location": {
+      "type": "string",
+      "description": "Job location (city, state, remote, etc.)"
+    },
+    "employment_type": {
+      "type": "string",
+      "enum": ["full-time", "part-time", "contract", "internship", "unknown"],
+      "description": "Type of employment"
+    },
+    "salary_range": {
+      "type": "object",
+      "properties": {
+        "min": { "type": ["number", "null"] },
+        "max": { "type": ["number", "null"] },
+        "currency": { "type": "string" },
+        "period": { "type": "string", "description": "e.g. annual, hourly" }
+      }
+    },
+    "required_skills": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of required technical or soft skills"
+    },
+    "responsibilities": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Key job responsibilities"
+    },
+    "qualifications": {
+      "type": "object",
+      "properties": {
+        "education": { "type": ["string", "null"] },
+        "years_of_experience": { "type": ["number", "null"] }
+      }
+    },
+    "benefits": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "application_deadline": {
+      "type": ["string", "null"],
+      "description": "ISO-8601 date or human-readable deadline"
+    },
+    "contact_email": {
+      "type": ["string", "null"]
+    }
+  },
+  "required": ["job_title", "company", "required_skills", "responsibilities"]
+}

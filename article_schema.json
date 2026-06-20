@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ArticleOrReport",
+  "description": "Generic schema for extracting key information from articles and reports.",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Main title or headline of the document"
+    },
+    "authors": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of authors or contributors"
+    },
+    "date_published": {
+      "type": ["string", "null"],
+      "description": "Publication date (ISO-8601 or human-readable)"
+    },
+    "summary": {
+      "type": "string",
+      "description": "2-3 sentence summary of the document's main content"
+    },
+    "key_topics": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Main topics or themes covered"
+    },
+    "key_findings": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Important facts, findings, or conclusions"
+    },
+    "entities_mentioned": {
+      "type": "object",
+      "properties": {
+        "people": { "type": "array", "items": { "type": "string" } },
+        "organizations": { "type": "array", "items": { "type": "string" } },
+        "locations": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "urls_and_references": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Any URLs or reference identifiers found in the document"
+    }
+  },
+  "required": ["title", "summary", "key_topics", "key_findings"]
+}
